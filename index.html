@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ☢︎ιɴᴠ☢︎ CLAN Application</title>
+    <style>
+        :root {
+            --primary: RED;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, skyblue 0%,  #4A425A82 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #425A5959;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .skills-input {
+            position: relative;
+        }
+
+        .skills-hint {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background-color: rgba(75, 181, 67, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">THE ☢︎ιɴᴠ☢︎ CLAN</div>
+            <h1>Membership Application</h1>
+            
+            <h2>𝔇𝔬𝔫'𝔱 𝔍𝔬𝔦𝔫 𝔦𝔣 𝔜𝔬𝔲 𝔄𝔯𝔢 𝔚𝔢𝔞𝔨</h2>
+            <p class="subtitle">Fill in your details to join the clan☠️</p>
+        </div>
+
+        <form id="developerForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Basic role:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="role" value="Frontend Developer" required>
+                        full levelled hacker
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="role" value="Backend Developer">
+                        bot developer
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="role" value="Full-Stack Developer">
+                        tools creator 
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="role" value="beginner level">
+                        beginner level
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Skills / Stack:</label>
+                <input type="text" id="skills" name="skills" placeholder="e.g. apps creator,beginner, termux handling, hacking, bot deb, web develop, tool creator..." required>
+                <div class="skills-hint">Separate skills with commas</div>
+            </div>
+
+            <div class="form-group">
+                <label>Experience Level:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="experience" value="Beginner" required>
+                        Beginner
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="experience" value="Intermediate">
+                        Intermediate
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="experience" value="Advanced">
+                        Advanced
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="portfolio">Portfolio / GitHub (if any):</label>
+                <input type="url" id="portfolio" name="portfolio" placeholder="https://">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (WhatsApp):</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability (hrs/day or days/week):</label>
+                <input type="text" id="availability" name="availability" placeholder="e.g. 4 hrs/day or 5 days/week" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country & Timezone:</label>
+                <input type="text" id="country" name="country" placeholder="e.g. Nigeria, GMT+1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="motivation">Why do you want to join ☢︎ιɴᴠ☢︎?</label>
+                <textarea id="motivation" name="motivation" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Application</button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Sending your application...</p>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                Your application has been submitted successfully!
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                There was an error submitting your application. Please try again.
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nickytech. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('developerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Format the message for Telegram
+            const message = `
+📋 *New Developer Application*
+
+*Full Name:* ${data.fullName}
+*Basic Role:* ${data.role}
+*Skills / Stack:* ${data.skills}
+*Experience Level:* ${data.experience}
+*Portfolio / GitHub:* ${data.portfolio || 'Not provided'}
+*Phone Number (WhatsApp):* ${data.phone}
+*Availability:* ${data.availability}
+*Country & Timezone:* ${data.country}
+*Why join ☢︎ιɴᴠ☢︎?:* ${data.motivation}
+            `;
+            
+            // Telegram bot API details
+            const botToken = '8235930215:AAH4STT14EYYpkrNtd8ooznZZ7iD8KTh5NI';
+            const chatIds = ['7382771864', '8023254099'];
+            
+            // Send message to both Telegram chats
+            const sendPromises = chatIds.map(chatId => 
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                })
+            );
+
+            // Wait for all messages to be sent
+            Promise.all(sendPromises)
+            .then(responses => Promise.all(responses.map(r => r.json())))
+            .then(results => {
+                document.getElementById('loading').style.display = 'none';
+                
+                const allSuccessful = results.every(result => result.ok);
+                if (allSuccessful) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('developerForm').reset();
+                } else {
+                    document.getElementById('errorMessage').style.display = 'block';
+                    console.error('Telegram API errors:', results);
+                }
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
